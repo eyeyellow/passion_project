@@ -21,3 +21,36 @@ post '/entries' do
   end
 
 end
+
+get '/entries/:id' do
+  @entry = Entry.find(params[:id])
+  @entry_type = @entry.entry_type
+  erb :'entries/show'
+end
+
+get '/entries/:id/edit' do
+  @entry_types = EntryType.all
+  @entry = Entry.find(params[:id])
+  erb :'entries/edit'
+end
+
+put '/entries/:id' do
+  @entry = Entry.find(params[:id])
+  @entry.assign_attributes(title: params[:title], description: params[:description])
+  if @entry.save
+    redirect '/entries'
+  else
+    erb :'entries/edit'
+  end
+end
+
+get '/entries/:id/delete' do
+  @entry = Entry.find(params[:id])
+  erb :'entries/delete'
+end
+
+delete '/entries/:id' do
+  @entry = Entry.find(params[:id])
+  @entry.destroy
+  redirect '/entries'
+end

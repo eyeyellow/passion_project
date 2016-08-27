@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Title:</h1>
+    <div>
+    <%= @entry.title %>
+    </div>
+  <h2>Description:</h2>
+    <div>
+    <%= @entry.description %>
+    </div>
+  <h2>Date:</h2>
+    <div>
+    <%= @entry.created_at.to_date %>
+    </div>
+  <h2>Entry Type:</h2>
+    <div>
+    <%= @entry_type.name %>
+    </div>
+  <div>
+  <a href='/'>Home</a>
+  </div>
+</div>

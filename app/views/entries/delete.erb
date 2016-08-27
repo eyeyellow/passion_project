@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Are you sure that you want to delete this entry?</h1>
+  <h2>Title:</h2>
+    <div>
+    <%= @entry.title %>
+    </div>
+  <h2>Description:</h2>
+    <div>
+    <%= @entry.description %>
+    </div>
+  <h2>Date:</h2>
+    <div>
+    <%= @entry.created_at.to_date %>
+    </div>
+  <div>
+  <div>
+  <form method="POST" action="/entries/<%= @entry.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete" class="buton">
+  <a href='/'>Nope, I change my mind</a>
+  </form>
+  </div>
+  </div>
+</div>

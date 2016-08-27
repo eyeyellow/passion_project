@@ -1,7 +1,10 @@
 <div class="container">
   <ul>
   <% @entries.each do |entry| %>
-  <li><%= entry.title %></li>
+  <li><a href='entries/<%= entry.id %>'><%= entry.title %> - </a>
+    <a href='/entries/<%= entry.id %>/edit'>Edit Entry - </a>
+    <a href='/entries/<%= entry.id %>/delete'>Delete Entry</a>
+  </li>
   <% end %>
   </ul>
   <a href='/'>Home</a>
