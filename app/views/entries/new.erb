@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Fill out the form below to create a new entry:</h1>
+  <form method="POST" action='/entries'>
+    <label>Title:</label>
+    <input type="text" name="title">
+    <label>Description:</label>
+    <textarea rows="10" cols="50" name="description"></textarea>
+    <select name="entry_type_id">
+      <% @entry_types.each do |entry_type| %>
+      <option value="<%= entry_type.id %>"><%= entry_type.name %>: <%= entry_type.id %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Submit" class="button">
+  </form>
+  <a href='/'>Home</a>
+</div>
