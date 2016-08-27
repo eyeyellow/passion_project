@@ -1,3 +1,3 @@
 class EntryType < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :entries, class_name: "Entry"
 end

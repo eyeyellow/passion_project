@@ -1,3 +1,3 @@
 class Entry < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :entry_type
 end
