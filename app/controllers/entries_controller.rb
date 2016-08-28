@@ -1,5 +1,6 @@
 get '/entries' do
-  @entries = Entry.all
+  user_id = session[:user_id]
+  @entries = Entry.where({id: user_id})
   erb :'entries/index'
 end
 
