@@ -1,7 +1,7 @@
 get '/entries' do
   user_id = session[:user_id]
   @user = User.find_by_id(user_id)
-  @entries = Entry.where({id: user_id})
+  @entries = Entry.where(user_id: user_id)
   erb :'entries/index'
 end
 
@@ -27,6 +27,7 @@ end
 
 get '/entries/:id' do
   @entry = Entry.find(params[:id])
+  p @entry.description
   @entry_type = @entry.entry_type
   erb :'entries/show'
 end

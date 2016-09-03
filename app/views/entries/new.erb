@@ -7,7 +7,7 @@
     <textarea rows="10" cols="50" name="description"></textarea>
     <select name="entry_type_id">
       <% @entry_types.each do |entry_type| %>
-      <option value="<%= entry_type.id %>"><%= entry_type.name %>: <%= entry_type.id %></option>
+      <option value="<%= entry_type.id %>"><%= entry_type.name %></option>
       <% end %>
     </select>
     <input type="submit" value="Submit" class="button">
