@@ -14,8 +14,9 @@ post '/entries' do
   p params
   @entry = Entry.new(
     title: params[:title],
-     description: params[:description],
-     entry_type_id: params[:entry_type_id])
+    user: User.find_by_id(session[:user_id]),
+    description: params[:description],
+    entry_type_id: params[:entry_type_id])
   if @entry.save
      redirect '/entries'
   else
