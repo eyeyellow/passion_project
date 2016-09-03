@@ -1,15 +1,27 @@
 <div class="container">
   <h2>Welcome <%= @user.first_name %>. Here are your gardening entries:</h2>
-  <ul>
-  <% @entries.each do |entry| %>
-  <li><a href='/entries/<%= entry.id %>'><%= entry.title %> - </a>
-    <a href='/entries/<%= entry.id %>/edit'>Edit Entry - </a>
-    <a href='/entries/<%= entry.id %>/delete'>Delete Entry</a>
-  </li>
-  <% end %>
-  </ul>
-  <a href='/'>Home</a>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Entry</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% @entries.each do |entry| %>
+    <tr>
+      <th><%= entry.created_at %></th>
+      <th><a href='/entries/<%= entry.id %>'><%= entry.title %></a></th>
+      <th><a href='/entries/<%= entry.id %>/edit'>Edit</a></th>
+      <th><a href='/entries/<%= entry.id %>/delete'>Delete</a></th>
+    <% end %>
+    </tr>
+  </table>
+
 </div>
 <div class="container">
   <h3><a href='/entries/new'>Click here to create a new entry</a></h3>
+  <div>
+    <a href='/'>Home</a>
+  </div>
 </div>
