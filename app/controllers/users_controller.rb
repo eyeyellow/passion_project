@@ -1,16 +1,12 @@
-# USER INDEX
 get '/users' do
   @users = User.all
   erb :'users/index'
 end
 
-# USER NEW
 get '/users/new' do
-
   erb :'users/new'
 end
 
-# USER CREATE TODO
 post '/users' do
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 

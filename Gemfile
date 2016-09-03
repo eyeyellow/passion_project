@@ -19,6 +19,8 @@ gem 'shotgun'
 
 gem 'dotenv'
 
+gem 'bcrypt-ruby'
+
 group :test do
   gem 'faker'
   gem 'rspec'

@@ -1,10 +1,18 @@
 <div class="container">
   <h1>Welcome to Frank's Garden App</h1>
+
   <h2>What would you like to do?</h2>
-  <a>Login</a>
-  <a>Register</a>
-  <a href='/sessions/new'>Log In</a>
-</form>
-  <a href='/users/new'>Sign Up</a>
-  <h3><%= ENV['SUPER_SECRET_KEY'] %></h3>
+  <% if @logged_in %>
+  <form method="POST" action="/sessions">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Logout" class="button">
+  </form>
+  <% else %>
+  <form method="GET" action="/users/new">
+    <button type="submit">Sign Up</button>
+  </form>
+  <form method="GET" action="/sessions/new">
+    <button type="submit">Login</button>
+  </form>
+  <% end %>
 </div>

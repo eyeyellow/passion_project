@@ -4,14 +4,16 @@ end
 
 post '/sessions' do
   if @user = User.find_by_email(params[:email])
-  # remember to change it after using BCrypt
-    if @user.password_hash == params[:password]
+    if @user && @user.password == params[:password]
       session[:user_id] = @user.id
+      p "successful login"
       redirect '/entries'
     else
       redirect '/'
+      p "no password match"
     end
   else
+    p "user not found"
     redirect '/'
   end
 end
