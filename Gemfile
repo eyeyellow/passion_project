@@ -20,6 +20,7 @@ gem 'shotgun'
 gem 'dotenv'
 
 gem 'bcrypt-ruby'
+gem 'httparty'
 
 group :test do
   gem 'faker'
