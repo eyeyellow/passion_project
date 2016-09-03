@@ -1,0 +1,13 @@
+<div class="container">
+  <p>Log in:</p>
+  <h2><%= @error if @error %></h2>
+  <form method="POST" action="/users">
+    <p><label for="first_name">First Name</label><input type="text" name="user[first_name]"></p>
+    <p><label for="last_name">Last Name</label><input type="text" name="user[last_name]"></p>
+    <p><label for="email">Email</label><input type="text" name="user[email]"></p>
+    <p><label for="password">Password</label><input type="password" name="user[password]"></p>
+    <p><label for="confirm_password">Confirm Password</label><input type="password" name="confirm_password"></p>
+  <button type="submit">Submit</button>
+  </form>
+  <a href='/'>Home</a>
+</div>

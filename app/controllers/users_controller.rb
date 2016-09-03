@@ -1,30 +1,27 @@
-get '/users' do
-  @users = User.all
-  erb :'users/index'
-end
-
 get '/users/new' do
   erb :'users/new'
 end
 
 post '/users' do
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-
-  @user = User.new(params)
-
-  if params[:email] =~ VALID_EMAIL_REGEX
-    @user.password = params[:password]
-    if @user.save
-      redirect '/sessions/new'
+  if params[:user][:email] =~ VALID_EMAIL_REGEX
+    p params[:user][:password]
+    p params[:confirm_password]
+    if params[:user][:password] == params[:confirm_password]
+      @user = User.new(params[:user])
+      if @user.save
+        redirect '/'
+      else
+        @error = "Please fill out all forms."
+        erb :'users/new'
+      end
     else
-      @errors = @user.errors.full_messages
+      @error = "Passwords do not match."
       erb :'users/new'
     end
   else
-    @errors = []
-    error = "invalid email. fix it please"
-    @errors << error
+    @error = "Invalid email."
     erb :'users/new'
   end
 end
