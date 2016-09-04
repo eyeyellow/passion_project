@@ -1,31 +1,31 @@
 <div class="container">
   <h2>Welcome <%= @user.first_name %>. Here are your gardening entries:</h2>
-
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Entry</th>
-      <th>Edit</th>
-      <th>Delete</th>
-      <th>Get Reminder</th>
-    </tr>
-    <% @entries.each do |entry| %>
-    <tr>
-      <th><%= entry.created_at %></th>
-      <th><a href='/entries/<%= entry.id %>'><%= entry.title %></a></th>
-      <th><a href='/entries/<%= entry.id %>/edit'>Edit</a></th>
-      <th><a href='/entries/<%= entry.id %>/delete'>Delete</a></th>
-      <th>
-        <form method="POST" action="/reminders">
-          <input type="hidden" name="reminder_freq" value="<%= entry.entry_type.reminder_freq %>">
-          <input type="hidden" name="entry_date" value="<%= entry.created_at %>">
-          <input type="submit" value="Reminder" class="button">
-        </form>
-      </th>
-    <% end %>
-    </tr>
-  </table>
-
+  <div class="entries-container">
+    <table>
+      <tr class="entries-headers">
+        <th>Date</th>
+        <th>Entry</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Get Reminder</th>
+      </tr>
+      <% @entries.each do |entry| %>
+      <tr class="entries-list">
+        <td class="entry-date"><%= entry.created_at.to_date %></td>
+        <td class="entry-title"><a href='/entries/<%= entry.id %>'><%=   entry.title %></a></td>
+        <td class="edit-entry"><a href='/entries/<%= entry.id %>/edit'  >Edit</a></td>
+        <td class="delete-entry"><a href='/entries/<%= entry.id %>  /delete'>Delete</a></td>
+        <td>
+          <form method="POST" action="/reminders">
+            <input type="hidden" name="reminder_freq" value="<%= entry  .entry_type.reminder_freq %>">
+            <input type="hidden" name="entry_date" value="<%= entry.  created_at %>">
+            <input type="submit" value="Reminder" class="button">
+          </form>
+        </td>
+      <% end %>
+      </tr>
+    </table>
+  </div>
 </div>
 <div class="container">
   <h3><a href='/entries/new'>Click here to create a new entry</a></h3>

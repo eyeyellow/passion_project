@@ -29,7 +29,11 @@ get '/entries/:id' do
   @entry = Entry.find(params[:id])
   p @entry.description
   @entry_type = @entry.entry_type
-  erb :'entries/show'
+  if request.xhr?
+    erb :'/entries/_show', locals: {entry: @entry}, layout: false
+  else
+    erb :'entries/show'
+  end
 end
 
 get '/entries/:id/edit' do

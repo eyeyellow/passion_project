@@ -1,7 +1,27 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  displayEntry();
+  hideEntry();
 });
+
+var displayEntry = function() {
+  $('.entries-list').on('click', '.entry-title', function(event) {
+    event.preventDefault();
+    var that = $(this);
+    var url = that.children().attr("href");
+    // console.log(url);
+    $.ajax({
+      method: 'get',
+      url: url,
+      data: url
+    })
+    .done(function(response) {
+      $(".entries-container").append(response);
+    })
+  })
+}
+
+var hideEntry = function() {
+  $('.entries-container').on('click', '.hide-button', function(event) {
+    $(".show-entry").hide();
+  })
+}
