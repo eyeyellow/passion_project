@@ -1,14 +1,18 @@
 require 'pp'
 require 'HTTParty'
+require 'dotenv'
+
 
 class WeatherForecast
 
   attr_reader :response
   include HTTParty
+  Dotenv.load("../../.env")
+
+  # Dotenv.load("~/Desktop/passion_project/.env")
 
   def initialize(args = {})
-    @key = ENV['WUND_KEY']
-    @response = HTTParty.get("http://api.wunderground.com/api/ad224568eeacc7b0/forecast/q/CA/San_Francisco.json")
+    @response = HTTParty.get(ENV['WEATHER_KEY'].to_s)
     @forecast = @response['forecast']
     @simpleforecast = @forecast['simpleforecast']
     @forecastday = @simpleforecast['forecastday']
@@ -29,7 +33,3 @@ class WeatherForecast
   end
 
 end
-
-
-# test = WeatherForecast.new
-# pp test.response

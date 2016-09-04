@@ -40,6 +40,8 @@ class Reminder
 
 end
 
+# Test methods with sample input data
+
 # test_hash = {reminder_freq: 1, avg_daily_temp: 61, entry_date: DateTime.now}
 # reminder = Reminder.new(test_hash)
 # p reminder.entry_date
