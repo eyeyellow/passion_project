@@ -3,6 +3,7 @@ require 'HTTParty'
 
 class WeatherForecast
 
+  attr_reader :response
   include HTTParty
 
   def initialize(args = {})
@@ -23,20 +24,12 @@ class WeatherForecast
   end
 
   def avg_daily_temp
+    # takes average of daily temperatures to send to reminder class
     avg_four_day_temp.reduce(:+) / 4
   end
 
-  def when_to_water(freq)
-    if avg_daily_temp < 70
-      freq * 2
-    elsif avg_daily_temp >= 70 && avg_daily_temp < 85
-      freq * 1
-    else
-      freq * 0.5
-    end
-  end
 end
 
 
-test = WeatherForecast.new
-pp test.when_to_water(1)
+# test = WeatherForecast.new
+# pp test.response
