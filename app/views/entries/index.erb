@@ -16,9 +16,10 @@
         <td class="edit-entry"><a href='/entries/<%= entry.id %>/edit'  >Edit</a></td>
         <td class="delete-entry"><a href='/entries/<%= entry.id %>  /delete'>Delete</a></td>
         <td>
-          <form method="POST" action="/reminders">
+          <form class='reminder-button' method="POST" action="/reminders">
             <input type="hidden" name="reminder_freq" value="<%= entry  .entry_type.reminder_freq %>">
             <input type="hidden" name="entry_date" value="<%= entry.  created_at %>">
+            <input type="hidden" name="entry_type_name" value="<%= entry.entry_type.name %>">
             <input type="submit" value="Reminder" class="button">
           </form>
         </td>
