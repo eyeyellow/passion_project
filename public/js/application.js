@@ -23,13 +23,13 @@ var displayEntry = function() {
 }
 
 var hideEntry = function() {
-  $('.entries-container').on('click', '.hide-button', function(event) {
+  $('.entries-container').on('click', '.button', function(event) {
     $(".show-entry").hide();
   })
 }
 
 var displayReminder = function() {
-  $('.entries-container').on('submit', '.reminder-button', function(event) {
+  $('.entries-container').on('submit', '.button', function(event) {
     event.preventDefault();
     reminderData = $(this).serialize();
     $.ajax({
@@ -45,7 +45,7 @@ var displayReminder = function() {
 }
 
 var hideReminder = function() {
-  $('.entries-container').on('click', '.hide-button', function(event) {
+  $('.entries-container').on('click', '.button', function(event) {
     $(".show-reminder").hide();
   })
 }

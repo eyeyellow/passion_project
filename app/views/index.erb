@@ -8,14 +8,14 @@
     <input type="submit" value="Logout" class="button">
   </form>
   <form method="GET" action="/entries">
-    <button type="submit">View Entries</button>
+    <button class="button" type="submit">View Entries</button>
   </form>
   <% else %>
   <form method="GET" action="/users/new">
-    <button type="submit">Sign Up</button>
+    <button class="button" type="submit">Sign Up</button>
   </form>
   <form method="GET" action="/sessions/new">
-    <button type="submit">Login</button>
+    <button class="button" type="submit">Login</button>
   </form>
   <% end %>
 <!-- <h3><%= ENV['SUPER_SECRET_KEY'] %></h3></div> -->

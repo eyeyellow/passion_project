@@ -1,7 +1,13 @@
 body {
-  background-color: #4E8AE8;
+  height: 800px;
   font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-  background-image: url("haeckel.jpeg");
+  background-image: url("garden_pic.jpg"); no-repeat center center;
+  background-size: cover;
+/*  position: fixed;*/
+}
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none; color: #cc181e;
 }
 
 .container {
@@ -22,4 +28,9 @@ table th, table td {
 
 th {
   text-align: left;
+}
+
+.button {
+  background-color: green;
+  border-radius: 7px;
 }
