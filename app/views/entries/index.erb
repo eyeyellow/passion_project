@@ -29,6 +29,15 @@
   </div>
 </div>
 <div class="container">
+  <% @forecast_data.each do |forecast| %>
+  <div class="weather">
+  <p><%= forecast[:date] %></p>
+  <p><%= forecast[:conditions] %></p>
+  <img src="<%=forecast[:icon_url] %>">
+  </div>
+  <% end %>
+</div>
+<div class="container">
   <h3><a href='/entries/new'>Click here to create a new entry</a></h3>
   <div>
     <a href='/'>Home</a>

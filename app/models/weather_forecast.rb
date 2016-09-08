@@ -14,6 +14,8 @@ class WeatherForecast
   def initialize(args = {})
     @response = HTTParty.get(ENV['WEATHER_KEY'].to_s)
     @forecast = @response['forecast']
+    @txt_forecast = @forecast['txt_forecast']
+    @txt_simple_forecast = @txt_forecast['forecastday']
     @simpleforecast = @forecast['simpleforecast']
     @forecastday = @simpleforecast['forecastday']
   end
@@ -32,4 +34,18 @@ class WeatherForecast
     avg_four_day_temp.reduce(:+) / 4
   end
 
+  def four_day_forecast
+    # return array of hashes with:
+    # icon_url, title, fcttext
+    @forecastday.map! do |day|
+      icon_url = day['icon_url']
+      date = "#{day['date']['weekday']} #{day['date']['monthname_short']} #{day['date']['day']}"
+      conditions = day['conditions']
+      {icon_url: icon_url, date: date, conditions: conditions}
+    end
+  end
+
 end
+
+# test = WeatherForecast.new
+# pp test.four_day_forecast

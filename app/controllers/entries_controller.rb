@@ -2,6 +2,9 @@ get '/entries' do
   user_id = session[:user_id]
   @user = User.find_by_id(user_id)
   @entries = Entry.where(user_id: user_id)
+  @forecast = WeatherForecast.new
+  @forecast_data = @forecast.four_day_forecast
+  p @forecast_data
   erb :'entries/index'
 end
 
