@@ -16,7 +16,7 @@
         <td class="edit-entry"><a href='/entries/<%= entry.id %>/edit'  >Edit</a></td>
         <td class="delete-entry"><a href='/entries/<%= entry.id %>  /delete'>Delete</a></td>
         <td>
-          <form class='reminder-button' method="POST" action="/reminders">
+          <form id='reminder-button' method="POST" action="/reminders">
             <input type="hidden" name="reminder_freq" value="<%= entry  .entry_type.reminder_freq %>">
             <input type="hidden" name="entry_date" value="<%= entry.  created_at %>">
             <input type="hidden" name="entry_type_name" value="<%= entry.entry_type.name %>">
@@ -31,9 +31,11 @@
 <div class="container">
   <% @forecast_data.each do |forecast| %>
   <div class="weather">
-  <p><%= forecast[:date] %></p>
+  <p><strong><%= forecast[:date] %></strong></p>
   <p><%= forecast[:conditions] %></p>
   <img src="<%=forecast[:icon_url] %>">
+  <p><%= forecast[:high] %></p>
+  <p><%= forecast[:low] %></p>
   </div>
   <% end %>
 </div>

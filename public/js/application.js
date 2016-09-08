@@ -29,7 +29,7 @@ var hideEntry = function() {
 }
 
 var displayReminder = function() {
-  $('.entries-container').on('submit', '.button', function(event) {
+  $('.entries-container').on('submit', '#reminder-button', function(event) {
     event.preventDefault();
     reminderData = $(this).serialize();
     $.ajax({

@@ -14,8 +14,6 @@ class WeatherForecast
   def initialize(args = {})
     @response = HTTParty.get(ENV['WEATHER_KEY'].to_s)
     @forecast = @response['forecast']
-    @txt_forecast = @forecast['txt_forecast']
-    @txt_simple_forecast = @txt_forecast['forecastday']
     @simpleforecast = @forecast['simpleforecast']
     @forecastday = @simpleforecast['forecastday']
   end
@@ -41,7 +39,9 @@ class WeatherForecast
       icon_url = day['icon_url']
       date = "#{day['date']['weekday']} #{day['date']['monthname_short']} #{day['date']['day']}"
       conditions = day['conditions']
-      {icon_url: icon_url, date: date, conditions: conditions}
+      high = "High - #{day['high']['fahrenheit']}˚ F"
+      low = "Low - #{day['low']['fahrenheit']}˚ F"
+      {icon_url: icon_url, date: date, conditions: conditions, high: high, low: low}
     end
   end
 
